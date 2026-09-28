@@ -1,0 +1,47 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "1. Run FastAPI Backend",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "legalEaseAPI.main:app",
+                "--host",
+                "0.0.0.0",
+                "--port",
+                "8000",
+                "--reload"
+            ],
+            "python": "${workspaceFolder}/venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "2. Run Streamlit Frontend",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "streamlit",
+            "args": [
+                "run",
+                "frontend/app.py",
+                "--server.port",
+                "8501"
+            ],
+            "python": "${workspaceFolder}/venv/Scripts/python.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "🚀 Run LegalEase (Backend + Frontend)",
+            "configurations": [
+                "1. Run FastAPI Backend",
+                "2. Run Streamlit Frontend"
+            ],
+            "stopAll": true
+        }
+    ]
+}
